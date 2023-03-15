@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import {Canvas} from "@react-three/fiber";
+import {OrbitControls, Stage} from "@react-three/drei";
+import Model  from './components/3DModels/Chair'
+import CarModel  from './components/3DModels/Cars/Car'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Container">
+        <Canvas>
+          <Stage environment="city" intensity={0.6}>
+            <CarModel/>
+          </Stage>
+          <OrbitControls enableZoom={true}/>
+        </Canvas>
+      </div>
+      <Canvas>
+        <Stage environment="city" intensity={0.6}>
+          <Model/>
+        </Stage>
+        <OrbitControls enableZoom={false}/>
+      </Canvas>
     </div>
   );
 }
